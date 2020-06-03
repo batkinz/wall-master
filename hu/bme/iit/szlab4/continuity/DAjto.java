@@ -4,16 +4,16 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class DAjto extends DPalyaelem{
-	// A kirajzolandÛ ajtÛ
+	// A kirajzoland√≥ ajt√≥
 	private Ajto elem;
 	
 	@Override
-	// Kirajzol·s
+	// Kirajzol√°s
 	public void draw(Graphics g, Pozicio balfelso){
-		// A kirajzol·s helyÈnek kisz·mol·s·hoz kell
+		// A kirajzol√°s hely√©nek kisz√°mol√°s√°hoz kell
 		Tile t = new Tile(100);
 		
-		// A kirajzolandÛ ajtÛ bal felsı sarka
+		// A kirajzoland√≥ ajt√≥ bal fels≈ë sarka
 		Pozicio poz = new Pozicio(balfelso.x+elem.getKoord().x-elem.getMeretH()/2, balfelso.y+(t.getMagassag()-elem.getKoord().y)-elem.getMeretV()/2);
 		
 		g.setColor(Color.red);

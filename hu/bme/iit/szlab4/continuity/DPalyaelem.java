@@ -3,6 +3,6 @@ package hu.bme.iit.szlab4.continuity;
 import java.awt.Graphics;
 
 public abstract class DPalyaelem {	
-	// kirajzolás-függvény
+	// kirajzolÃ¡s-fÃ¼ggvÃ©ny
 	public abstract void draw(Graphics g, Pozicio balfelso);
 }

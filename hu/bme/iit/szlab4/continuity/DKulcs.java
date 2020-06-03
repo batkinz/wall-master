@@ -4,25 +4,25 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class DKulcs extends DPalyaelem{
-	// A kirajzolandÛ kulcs
+	// A kirajzoland√≥ kulcs
 	private Kulcs elem;
 	
 	@Override
-	// Kirajzol·s
+	// Kirajzol√°s
 	public void draw(Graphics g, Pozicio balfelso) {
-		// A kirajzol·s helyÈnek kisz·mol·s·hoz kell
+		// A kirajzol√°s hely√©nek kisz√°mol√°s√°hoz kell
 		Tile t = new Tile(100);
 		
-		// A kirajzolandÛ kulcs bal felsı sarka
+		// A kirajzoland√≥ kulcs bal fels≈ë sarka
 		Pozicio poz = new Pozicio(balfelso.x+elem.getKoord().x-elem.getMeretH()/2, balfelso.y+(t.getMagassag()-elem.getKoord().y)-elem.getMeretV()/2);
-		// Ha felvehetı a kulcs
+		// Ha felvehet≈ë a kulcs
 		if (elem.getFelveheto()){
-			// Akkor zˆld
+			// Akkor z√∂ld
 			g.setColor(Color.green);
 		}
-		// Ha nem vehetı fel
+		// Ha nem vehet≈ë fel
 		else {
-			// Sz¸rke
+			// Sz√ºrke
 			g.setColor(Color.gray);
 		}
 		g.fillRect(poz.x, poz.y, elem.getMeretH()+1, elem.getMeretV()+1);

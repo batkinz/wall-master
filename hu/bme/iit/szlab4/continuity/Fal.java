@@ -8,11 +8,11 @@ public class Fal extends Palyaelem{
 		return false;		
 	}	
 	
-	// korrigálja a játékos pozícióját
+	// korrigÃ¡lja a jÃ¡tÃ©kos pozÃ­ciÃ³jÃ¡t
 	
 	public boolean korrekcio(Jatekos j){
 
-		// melyik falakat metszette a játékos
+		// melyik falakat metszette a jÃ¡tÃ©kos
 		boolean jobb = false;
 		boolean bal = false ;
 		boolean fent = false;
@@ -21,35 +21,35 @@ public class Fal extends Palyaelem{
 		int jMeret = j.getMeret()/2;
 		
 		// A fal sarkai
-		// bal alsó sarka
+		// bal alsÃ³ sarka
 		Pozicio ba = new Pozicio(palyaElemPoz.x-meret_h/2,palyaElemPoz.y-meret_v/2);
-		// jobb alsó sarka
+		// jobb alsÃ³ sarka
 		Pozicio ja = new Pozicio(palyaElemPoz.x+meret_h/2,palyaElemPoz.y-meret_v/2);
-		// jobb felsõ sarka
+		// jobb felsÅ‘ sarka
 		Pozicio jf = new Pozicio(palyaElemPoz.x+meret_h/2,palyaElemPoz.y+meret_v/2);
-		// bal felsõ sarka
+		// bal felsÅ‘ sarka
 		Pozicio bf = new Pozicio(palyaElemPoz.x-meret_h/2,palyaElemPoz.y+meret_v/2);
 		
 		if (j.getXSeb()>0){
-		//	System.out.println("LÖL");
+		//	System.out.println("LÃ–L");
 		}
 		
-		// Az új pozíció (double)
+		// Az Ãºj pozÃ­ciÃ³ (double)
 		double ujx;
 		double ujy;
 		ujx = j.getAktKoord().x;
 		ujy = j.getAktKoord().y;
 		
-		// A régi pozíció
+		// A rÃ©gi pozÃ­ciÃ³
 		Pozicio regipoz = new Pozicio();
 		regipoz.x = j.getAktKoord().x - j.getXSeb();
 		regipoz.y = j.getAktKoord().y - j.getUgras();
-		// Az új pozíció
+		// Az Ãºj pozÃ­ciÃ³
 		Pozicio ujpoz = new Pozicio();
 		ujpoz.x = j.getAktKoord().x;
 		ujpoz.y = j.getAktKoord().y;
 			
-		// A korrigált pozíció
+		// A korrigÃ¡lt pozÃ­ciÃ³
 		Pozicio korr = new Pozicio();
 		
 		double[] ujkoord = new double[2];
@@ -66,47 +66,47 @@ public class Fal extends Palyaelem{
 			//System.out.println(++i);
 		}
 		 
-		// az algoritmus végén kerekíteni kell a double-t int-re
-		// mivel azt szeretnénk, hogy a double koorinátát "minél messzebbre kerekítsük" a pályaelemtõl, ezért
-		// megnézzük, hogy honnan teütköztünk a fallal, és ennek függvényében csonkolunk/adunk hozzá
+		// az algoritmus vÃ©gÃ©n kerekÃ­teni kell a double-t int-re
+		// mivel azt szeretnÃ©nk, hogy a double koorinÃ¡tÃ¡t "minÃ©l messzebbre kerekÃ­tsÃ¼k" a pÃ¡lyaelemtÅ‘l, ezÃ©rt
+		// megnÃ©zzÃ¼k, hogy honnan teÃ¼tkÃ¶ztÃ¼nk a fallal, Ã©s ennek fÃ¼ggvÃ©nyÃ©ben csonkolunk/adunk hozzÃ¡
 		
 		korr.x = (int)ujx;
 		korr.y = (int)ujy;
 		
-		// A játékos sarkai
-		// bal alsó sarka
+		// A jÃ¡tÃ©kos sarkai
+		// bal alsÃ³ sarka
 		Pozicio j_ba = new Pozicio(korr.x-jMeret,korr.y-2*jMeret);
-		// bal felsõ sarka
+		// bal felsÅ‘ sarka
 		Pozicio j_bf = new Pozicio(korr.x-jMeret,korr.y+2*jMeret);
-		// jobb alsó sarka
+		// jobb alsÃ³ sarka
 		Pozicio j_ja = new Pozicio(korr.x+jMeret,korr.y-2*jMeret);
-		// jobb felsõ sarka
+		// jobb felsÅ‘ sarka
 		Pozicio j_jf = new Pozicio(korr.x+jMeret,korr.y+2*jMeret);
 		
-		// felülrõl estünk
+		// felÃ¼lrÅ‘l estÃ¼nk
 		if (regipoz.x == ujpoz.x && (regipoz.y>ujpoz.y)){
 			j.setUgras(0);
 			j.setUgrik(false);
 			korr.y += 1;
-			//System.out.println("felül");
+			//System.out.println("felÃ¼l");
 		} else
-		// alulról ugrottunk 
+		// alulrÃ³l ugrottunk 
 		if (regipoz.x == ujpoz.x && (regipoz.y<ujpoz.y)){
 			j.setUgras(0);
 			//System.out.println("alul");
 		} else
-		// jobbról mentünk
+		// jobbrÃ³l mentÃ¼nk
 		if (regipoz.y == ujpoz.y && (regipoz.x>ujpoz.x)){
 			j.setXSeb(0);
 			korr.x += 1;
 		//	if (meret_v == 100) System.out.println("jobb");
 		} else
-		// balról mentünk
+		// balrÃ³l mentÃ¼nk
 		if (regipoz.y == ujpoz.y && (regipoz.x<ujpoz.x)){
 			j.setXSeb(0);
 		//	System.out.println("bal");
 		} else			
-		// jobb felülrõl mentünk
+		// jobb felÃ¼lrÅ‘l mentÃ¼nk
 		if ((regipoz.y>ujpoz.y) && (regipoz.x>ujpoz.x)){
 			
 			if (fent && !jobb){
@@ -129,9 +129,9 @@ public class Fal extends Palyaelem{
 			
 			korr.x += 1;
 			korr.y += 1;
-		//	System.out.println("jobbfelül");
+		//	System.out.println("jobbfelÃ¼l");
 		} else
-		// jobb alulról mentünk
+		// jobb alulrÃ³l mentÃ¼nk
 		if ((regipoz.y<ujpoz.y) && (regipoz.x>ujpoz.x)){
 			if (lent && !jobb){
 				j.setUgras(0);
@@ -147,7 +147,7 @@ public class Fal extends Palyaelem{
 			korr.x += 1;
 		//	System.out.println("jobbalul");
 		} else
-		// bal felülrõl mentünk
+		// bal felÃ¼lrÅ‘l mentÃ¼nk
 		if ((regipoz.y>ujpoz.y) && (regipoz.x<ujpoz.x)){
 			if (fent && !bal){
 				j.setUgras(0);
@@ -163,10 +163,10 @@ public class Fal extends Palyaelem{
 					j.setXSeb(0);
 				}
 			}
-		//	System.out.println("balfelül");
+		//	System.out.println("balfelÃ¼l");
 			korr.y += 1;
 		} else 
-		// bal alulról mentünk
+		// bal alulrÃ³l mentÃ¼nk
 		if ((regipoz.y<ujpoz.y) && (regipoz.x<ujpoz.x)){
 			if (lent && !bal){
 				j.setUgras(0);
@@ -190,26 +190,26 @@ public class Fal extends Palyaelem{
 	}
 	
 	
-	// metszi-e a jatekos az uj koordinataival a vizsgált palyaelemet
+	// metszi-e a jatekos az uj koordinataival a vizsgÃ¡lt palyaelemet
 	boolean metszes(double ujx, double ujy, Jatekos j){
 
-		// a pályaelem bal alsó sarka
+		// a pÃ¡lyaelem bal alsÃ³ sarka
 		Pozicio balalso = new Pozicio(palyaElemPoz.x-meret_h/2,palyaElemPoz.y-meret_v/2);	
-		// a pályaelem jobb felsõ sarka
+		// a pÃ¡lyaelem jobb felsÅ‘ sarka
 		Pozicio jobbfelso = new Pozicio(palyaElemPoz.x+meret_h/2, palyaElemPoz.y+meret_v/2);
-		// a játékos bal alsó sarka
+		// a jÃ¡tÃ©kos bal alsÃ³ sarka
 		double bax = ujx - j.getMeret()/2;
 		double bay = ujy - j.getMeret();
-		// a játékos jobb felsõ sarka
+		// a jÃ¡tÃ©kos jobb felsÅ‘ sarka
 		double jfx = ujx + j.getMeret()/2;
 		double jfy = ujy + j.getMeret();
-		// horizontális átfedés
+		// horizontÃ¡lis Ã¡tfedÃ©s
 		boolean xmetszi = false;
-		// vertikális átfedés
+		// vertikÃ¡lis Ã¡tfedÃ©s
 		boolean ymetszi = false;
 		
 		double atfed = 0;
-		//vízszintesen
+		//vÃ­zszintesen
 		if (bax < balalso.x) {
 	        atfed = balalso.x - jfx;
 	    } else {
@@ -219,7 +219,7 @@ public class Fal extends Palyaelem{
 		if(atfed <= 0)
 			xmetszi = true;
 		
-		//függõlegesen
+		//fÃ¼ggÅ‘legesen
 		if (bay < balalso.y) {
 	        atfed = balalso.y - jfy;
 	    } else {
@@ -228,14 +228,14 @@ public class Fal extends Palyaelem{
 		
 		if(atfed <= 0)
 			ymetszi = true;
-		// metszik egymást, ha vertikálisan és horizontálisan összelógnak
+		// metszik egymÃ¡st, ha vertikÃ¡lisan Ã©s horizontÃ¡lisan Ã¶sszelÃ³gnak
 		return (ymetszi & xmetszi);
 	}
 	
-	// karakter visszatolása
+	// karakter visszatolÃ¡sa
 	double[] visszatol(Pozicio regi, double ujx, double ujy, Jatekos j){
 		double[] ret = {ujx, ujy, 1, 1, 1, 1};
-		// SZÍNKÓD:
+		// SZÃNKÃ“D:
 		// [0] - ujx
 		// [1] - ujy
 		// [2] - jobb
@@ -246,13 +246,13 @@ public class Fal extends Palyaelem{
 		double deltaY = j.getAktKoord().y-regi.y;
 		
 		// A fal sarkai
-		// bal alsó sarka
+		// bal alsÃ³ sarka
 		Pozicio ba = new Pozicio(palyaElemPoz.x-meret_h/2,palyaElemPoz.y-meret_v/2);
-		// jobb alsó sarka
+		// jobb alsÃ³ sarka
 		Pozicio ja = new Pozicio(palyaElemPoz.x+meret_h/2,palyaElemPoz.y-meret_v/2);
-		// jobb felsõ sarka
+		// jobb felsÅ‘ sarka
 		Pozicio jf = new Pozicio(palyaElemPoz.x+meret_h/2,palyaElemPoz.y+meret_v/2);
-		// bal felsõ sarka
+		// bal felsÅ‘ sarka
 		Pozicio bf = new Pozicio(palyaElemPoz.x-meret_h/2,palyaElemPoz.y+meret_v/2);	
 		
 		ret[2] = falatmetszett(ja,jf,ujx,ujy,j)? 1 : 0;
@@ -260,14 +260,14 @@ public class Fal extends Palyaelem{
 		ret[4] = falatmetszett(bf,jf,ujx,ujy,j)? 1 : 0;
 		ret[5] = falatmetszett(ba,ja,ujx,ujy,j)? 1 : 0;
 		
-		// ha csak X irányban mozgott
+		// ha csak X irÃ¡nyban mozgott
 		if (deltaY == 0 && deltaX!= 0){
 			ujx -= 0.05*deltaX;
 			ret[0] = ujx;
 			ret[1] = ujy;
 			return ret;
 		}
-		// ha csak Y irányban mozgott
+		// ha csak Y irÃ¡nyban mozgott
 		if (deltaX == 0&& deltaY!= 0){
 			ujy -= 0.05*deltaY;
 			ret[0] = ujx;
@@ -295,7 +295,7 @@ public class Fal extends Palyaelem{
 			i++;
 		}
 		
-		// játékos aktuális koordinátája
+		// jÃ¡tÃ©kos aktuÃ¡lis koordinÃ¡tÃ¡ja
 		int jMeret = j.getMeret()/2;
 		
 		double j_bax = ujx-jMeret;
@@ -308,13 +308,13 @@ public class Fal extends Palyaelem{
 		Pozicio jobbfelso = p2;
 		
 		
-		// horizontális átfedés
+		// horizontÃ¡lis Ã¡tfedÃ©s
 		boolean xmetszi = false;
-		// vertikális átfedés
+		// vertikÃ¡lis Ã¡tfedÃ©s
 		boolean ymetszi = false;
 		
 		double atfed = 0;
-		//vízszintesen
+		//vÃ­zszintesen
 		if (j_bax <= balalso.x) {
 	        atfed = balalso.x - j_jfx;
 	    } else {
@@ -324,7 +324,7 @@ public class Fal extends Palyaelem{
 		if(atfed <= 0)
 			xmetszi = true;
 		
-		//függõlegesen
+		//fÃ¼ggÅ‘legesen
 		if (j_bay <= balalso.y) {
 	        atfed = balalso.y - j_jfy;
 	    } else {
@@ -333,7 +333,7 @@ public class Fal extends Palyaelem{
 		
 		if(atfed <= 0)
 			ymetszi = true;
-		// metszik egymást, ha vertikálisan és horizontálisan összelógnak
+		// metszik egymÃ¡st, ha vertikÃ¡lisan Ã©s horizontÃ¡lisan Ã¶sszelÃ³gnak
 		return (ymetszi & xmetszi);
 		
 	}	

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DTile {
-	// kirajzolandÛ p·lyaelemeket tartalmazÛ lista
+	// kirajzoland√≥ p√°lyaelemeket tartalmaz√≥ lista
 	private List<DPalyaelem> dpalyaelemek = new ArrayList<DPalyaelem>();
 	private Tile tile;
 	
@@ -15,13 +15,13 @@ public class DTile {
 		DPalyaelem tempDP = null;
 		for (int i = 0; i < t.getListaHossz() ; i++){
 			if (t.getPalyaelem(i).getClass().equals(Fal.class)){
-				// Ha a vizsg·lt elem FAL
+				// Ha a vizsg√°lt elem FAL
 				tempDP = new DFal((Fal)t.getPalyaelem(i));				
 			} else if (t.getPalyaelem(i).getClass().equals(Ajto.class)){
-				// Ha a vizsg·lt elem AJT”
+				// Ha a vizsg√°lt elem AJT√ì
 				tempDP = new DAjto((Ajto)t.getPalyaelem(i));	
 			} else if (t.getPalyaelem(i).getClass().equals(Kulcs.class)){
-				// Ha a vizsg·lt elem KULCS
+				// Ha a vizsg√°lt elem KULCS
 				tempDP = new DKulcs((Kulcs)t.getPalyaelem(i));
 			}
 		
@@ -30,31 +30,31 @@ public class DTile {
 	}
 	
 	
-	// kirajzol·s
+	// kirajzol√°s
 	public void draw(Graphics g, int koz){
 		
-		// A kirajzolandÛ tile LOGIKAI pozÌciÛja
+		// A kirajzoland√≥ tile LOGIKAI poz√≠ci√≥ja
 		Pozicio tilepoz = tile.getKoord();
-		// y koordin·t·k invert·l·sa
+		// y koordin√°t√°k invert√°l√°sa
 		tilepoz.y = 1-tilepoz.y;
-		// Tile szÈlessÈge
+		// Tile sz√©less√©ge
 		int tileszeles = tile.getSzelesseg();
-		// Tile magass·ga
+		// Tile magass√°ga
 		int tilemagas = tile.getMagassag();
-		// Tile-ok kˆzˆtti rÈs
+		// Tile-ok k√∂z√∂tti r√©s
 		int gap = koz;
-		// KirajzolandÛ tile bal felsı pontj·nak GRAFIKUS koordin·t·i
+		// Kirajzoland√≥ tile bal fels≈ë pontj√°nak GRAFIKUS koordin√°t√°i
 		Pozicio balfelso = new Pozicio(gap+tilepoz.x*(tileszeles+gap),gap+tilepoz.y*(tilemagas+gap));
 
-		// Tile kirajzol·sa
+		// Tile kirajzol√°sa
 		if (!tile.getUres()){
 			g.setColor(Color.white);
 			g.fillRect(balfelso.x, balfelso.y, tileszeles, tilemagas);
 		}
 		
-		// vÈgigmegy¸nk a p·lyaelemeken
+		// v√©gigmegy√ºnk a p√°lyaelemeken
 		for (int i = 0 ; i < dpalyaelemek.size() ; i++){
-			// kirajzoltatjuk ıket sorban
+			// kirajzoltatjuk ≈ëket sorban
 			dpalyaelemek.get(i).draw(g, balfelso);
 		}
 		

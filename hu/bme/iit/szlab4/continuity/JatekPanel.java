@@ -15,7 +15,7 @@ public class JatekPanel extends JPanel {
 	
 	private final Grafika sajatFrame;
 	
-	// KirajzolandÛ p·lya
+	// Kirajzoland√≥ p√°lya
 	private DPalya dpalya = new DPalya();
 	
 	/**
@@ -50,9 +50,9 @@ public class JatekPanel extends JPanel {
 		List<DJatekos> djatekosok = dpalya.getdjatekosok();
 		List<DTile> dtileok = dpalya.getdtileok();
 		
-		/*	KIRAJZOL¡S-TESZTHEZ J”L J÷N
+		/*	KIRAJZOL√ÅS-TESZTHEZ J√ìL J√ñN
 		
-		//TesztelÈshez segÌtsÈg
+		//Tesztel√©shez seg√≠ts√©g
 		Tile tile1 = new Tile(11);
 		Tile tile2 = new Tile(12);
 		Tile tile3 = new Tile(13);
@@ -111,31 +111,31 @@ public class JatekPanel extends JPanel {
 		*/
 		Tile temp = new Tile(10);
 		
-		// Egy tile szÈlessÈge
+		// Egy tile sz√©less√©ge
 		int tileszeles = temp.getSzelesseg();
-		// Egy tile magass·ga
+		// Egy tile magass√°ga
 		int tilemagas = temp.getMagassag();
-		// Tile-ok kˆzˆtti rÈs
+		// Tile-ok k√∂z√∂tti r√©s
 		int gap = 5;
 		
-		// P·lya kirajzol·sa
-		// A p·lya h·ttere: S¡RGA
+		// P√°lya kirajzol√°sa
+		// A p√°lya h√°ttere: S√ÅRGA
 		g.setColor(Color.yellow);
 		g.fillRect(0, 0, 2*tileszeles + 3*gap, 2* tilemagas + 3*gap);
 		
-		// VÈgigmegy¸nk a tile-okon
+		// V√©gigmegy√ºnk a tile-okon
 		for (int i = 0; i < dtileok.size() ; i++){
-			// Kirajzoljuk ıket sorban
+			// Kirajzoljuk ≈ëket sorban
 			dtileok.get(i).draw(g,gap);
 		}
 		
-		// VÈgigmegy¸nk a j·tÈkosokon
+		// V√©gigmegy√ºnk a j√°t√©kosokon
 		for (int i = 0; i < djatekosok.size() ; i++){
-			// Kirajzoljuk ıket sorban
+			// Kirajzoljuk ≈ëket sorban
 			djatekosok.get(i).draw(g, gap);
 		}
 		
-		// KilÛgÛ p·lyaelemekrÈszek lev·g·sa
+		// Kil√≥g√≥ p√°lyaelemekr√©szek lev√°g√°sa
 		g.setColor(Color.yellow);
 		g.fillRect(0,0,2*tileszeles+3*gap,gap);
 		g.fillRect(0,0,gap,2*tilemagas+3*gap);

@@ -40,30 +40,30 @@ public class Palya {
 		
 	}
 	
-	//Áttekintõ nézetben mozgatja a Tile-okat
+	//ÃttekintÅ‘ nÃ©zetben mozgatja a Tile-okat
 	public void attekintoMozgat(Billentyu b) {
 		if(b.isAllFalse()){
 			return;
 		}
 		
-		boolean megvan = false; //segédváltozó a keresésekhez
-		int i = 0;				//ciklusváltozó a keresésekhez
-		Tile tempT = null;		//segédváltozó mozgatható Tile kereséséhez és mozgatásához
-		Tile uresT = null;		//kell majd az üres Tile is
+		boolean megvan = false; //segÃ©dvÃ¡ltozÃ³ a keresÃ©sekhez
+		int i = 0;				//ciklusvÃ¡ltozÃ³ a keresÃ©sekhez
+		Tile tempT = null;		//segÃ©dvÃ¡ltozÃ³ mozgathatÃ³ Tile keresÃ©sÃ©hez Ã©s mozgatÃ¡sÃ¡hoz
+		Tile uresT = null;		//kell majd az Ã¼res Tile is
 		
-		while(!megvan){					//üres Tile megkeresése
-			uresT = tilelista.get(i);	//kiveszünk egyet
-			megvan = uresT.getUres();		//megnézzük, hogy üres-e, ha igen kész is vagyunk
+		while(!megvan){					//Ã¼res Tile megkeresÃ©se
+			uresT = tilelista.get(i);	//kiveszÃ¼nk egyet
+			megvan = uresT.getUres();		//megnÃ©zzÃ¼k, hogy Ã¼res-e, ha igen kÃ©sz is vagyunk
 			
-			i++;						//ha mégsem, nézzük a következõt
+			i++;						//ha mÃ©gsem, nÃ©zzÃ¼k a kÃ¶vetkezÅ‘t
 		}
 		
 		for(int j = 0; j < jatekosok.size(); j++){
-			if(!jatekosok.get(j).getReszletes()){		//ha áttekintõ nézetben van
-				megvan = false;					//segédváltozók elõkészítése
-				int irany = 0;		//aktuálisan vizsgált Játékos billentyûi alapján meghatározott irány
+			if(!jatekosok.get(j).getReszletes()){		//ha Ã¡ttekintÅ‘ nÃ©zetben van
+				megvan = false;					//segÃ©dvÃ¡ltozÃ³k elÅ‘kÃ©szÃ­tÃ©se
+				int irany = 0;		//aktuÃ¡lisan vizsgÃ¡lt JÃ¡tÃ©kos billentyÅ±i alapjÃ¡n meghatÃ¡rozott irÃ¡ny
 									//fel = 1, le = 2, bal = 3, jobb = 4
-				if(j == 0){			//irány beállítása a Tile-ok mozgathatóságának vizsgálatához
+				if(j == 0){			//irÃ¡ny beÃ¡llÃ­tÃ¡sa a Tile-ok mozgathatÃ³sÃ¡gÃ¡nak vizsgÃ¡latÃ¡hoz
 					if(b.j1_fel){
 						irany = 1;
 					} else if(b.j1_le){
@@ -86,48 +86,48 @@ public class Palya {
 				}
 				
 				i = 0;
-				while(!megvan && (i < tilelista.size())){		//elsõ mozgatható Tile megkeresése és mozgatása (egyszerre egyet mozgatunk,
-									//a többivel a következõ tick-ben foglalkozunk	
+				while(!megvan && (i < tilelista.size())){		//elsÅ‘ mozgathatÃ³ Tile megkeresÃ©se Ã©s mozgatÃ¡sa (egyszerre egyet mozgatunk,
+									//a tÃ¶bbivel a kÃ¶vetkezÅ‘ tick-ben foglalkozunk	
 					tempT = tilelista.get(i);
 					megvan = tileMehet(uresT, tempT, irany);
 					if(megvan)		//ha megvan el is mozgatjuk
 						tileMozgat(uresT, tempT);
 					
-					i++;			//ha nincs meg nézzük a következõt
+					i++;			//ha nincs meg nÃ©zzÃ¼k a kÃ¶vetkezÅ‘t
 				}
 			}
 		}
 	}
 	
-	public boolean compareTile(Tile forras, Tile cel) {//Tile-ok bal alsó sarkát tároljuk, minden koordináta 
-														//a megszokott koordinátarednszer szerint mozog
-														//egy Tile 300 széles és 500 magas		
+	public boolean compareTile(Tile forras, Tile cel) {//Tile-ok bal alsÃ³ sarkÃ¡t tÃ¡roljuk, minden koordinÃ¡ta 
+														//a megszokott koordinÃ¡tarednszer szerint mozog
+														//egy Tile 300 szÃ©les Ã©s 500 magas		
 		
 		if (cel.getUres()){
 			return false;
 		}	
 		
-		int x = 0;	//segédváltozók
+		int x = 0;	//segÃ©dvÃ¡ltozÃ³k
 		int y = 0;
 		
-		boolean sflag = false; // segédflag a pontvizsgálathoz
+		boolean sflag = false; // segÃ©dflag a pontvizsgÃ¡lathoz
 		
 		List<Boolean> forrasRes = new ArrayList<Boolean>(); 
 		List<Boolean> celRes = new ArrayList<Boolean>(); 
 		Palyaelem temp;
 		Pozicio tempPoz = new Pozicio();
 		
-		if(forras.getKoord().x == cel.getKoord().x){//egymás felett vannak
-			if(forras.getKoord().y < cel.getKoord().y){//a cél van felül
+		if(forras.getKoord().x == cel.getKoord().x){//egymÃ¡s felett vannak
+			if(forras.getKoord().y < cel.getKoord().y){//a cÃ©l van felÃ¼l
 				for(int i = 0; i < cel.getSzelesseg(); i++){
 					x = i;
 					
-					y = cel.getMagassag()-1;	//forrás tetején lévõket nézzük
+					y = cel.getMagassag()-1;	//forrÃ¡s tetejÃ©n lÃ©vÅ‘ket nÃ©zzÃ¼k
 					sflag = false;
 					for(int j = 0; j < forras.getListaHossz(); j++){
 						temp = forras.getPalyaelem(j);
 						if(temp.getFent()){
-							tempPoz.x = temp.getKoord().x - temp.getMeretH()/2;	//vizsgált Pályaelem bal alsó sarka
+							tempPoz.x = temp.getKoord().x - temp.getMeretH()/2;	//vizsgÃ¡lt PÃ¡lyaelem bal alsÃ³ sarka
 							tempPoz.y = temp.getKoord().y - temp.getMeretV()/2;
 							
 							if( ((tempPoz.x <= x) && ((tempPoz.x + temp.getMeretH()) >= x)) 
@@ -140,12 +140,12 @@ public class Palya {
 					
 					forrasRes.add(sflag);
 					
-					y = 0;	//cél alján lévõket nézzük
+					y = 0;	//cÃ©l aljÃ¡n lÃ©vÅ‘ket nÃ©zzÃ¼k
 					sflag = false;
 					for(int j = 0; j < cel.getListaHossz(); j++){
 						temp = cel.getPalyaelem(j);
 						if(temp.getLent()){
-							tempPoz.x = temp.getKoord().x - temp.getMeretH()/2;	//vizsgált Pályaelem bal alsó sarka
+							tempPoz.x = temp.getKoord().x - temp.getMeretH()/2;	//vizsgÃ¡lt PÃ¡lyaelem bal alsÃ³ sarka
 							tempPoz.y = temp.getKoord().y - temp.getMeretV()/2;
 							
 							if( ((tempPoz.x <= x) && ((tempPoz.x + temp.getMeretH()) >= x)) 
@@ -158,15 +158,15 @@ public class Palya {
 					
 					celRes.add(sflag);
 				}
-			} else {								//a forrás van felül
+			} else {								//a forrÃ¡s van felÃ¼l
 				for(int i = 0; i < cel.getSzelesseg(); i++){
 					x = i;
 					sflag = false;
-					y = 0;	//forrás alján lévõket nézzük
+					y = 0;	//forrÃ¡s aljÃ¡n lÃ©vÅ‘ket nÃ©zzÃ¼k
 					for(int j = 0; j < forras.getListaHossz(); j++){
 						temp = forras.getPalyaelem(j);
 						if(temp.getLent()){
-							tempPoz.x = temp.getKoord().x - temp.getMeretH()/2;	//vizsgált Pályaelem bal alsó sarka
+							tempPoz.x = temp.getKoord().x - temp.getMeretH()/2;	//vizsgÃ¡lt PÃ¡lyaelem bal alsÃ³ sarka
 							tempPoz.y = temp.getKoord().y - temp.getMeretV()/2;
 							
 							if( ((tempPoz.x <= x) && ((tempPoz.x + temp.getMeretH()) >= x)) 
@@ -178,11 +178,11 @@ public class Palya {
 					}
 					forrasRes.add(sflag);
 					sflag = false;
-					y = cel.getMagassag()-1;	//cél tetején lévõket nézzük
+					y = cel.getMagassag()-1;	//cÃ©l tetejÃ©n lÃ©vÅ‘ket nÃ©zzÃ¼k
 					for(int j = 0; j < cel.getListaHossz(); j++){
 						temp = cel.getPalyaelem(j);
 						if(temp.getFent()){
-							tempPoz.x = temp.getKoord().x - temp.getMeretH()/2;	//vizsgált Pályaelem bal alsó sarka
+							tempPoz.x = temp.getKoord().x - temp.getMeretH()/2;	//vizsgÃ¡lt PÃ¡lyaelem bal alsÃ³ sarka
 							tempPoz.y = temp.getKoord().y - temp.getMeretV()/2;
 							
 							if( ((tempPoz.x <= x) && ((tempPoz.x + temp.getMeretH()) >= x)) 
@@ -195,16 +195,16 @@ public class Palya {
 					celRes.add(sflag);
 				}							
 			}
-		} else if(forras.getKoord().y == cel.getKoord().y){//egymás mellett vannak
-			if(forras.getKoord().x < cel.getKoord().x){//a cél van jobbra
+		} else if(forras.getKoord().y == cel.getKoord().y){//egymÃ¡s mellett vannak
+			if(forras.getKoord().x < cel.getKoord().x){//a cÃ©l van jobbra
 				for(int i = 0; i < cel.getMagassag(); i++){
 					y = i;
 					sflag = false;
-					x = cel.getSzelesseg()-1;	//forrás jobb oldalán lévõket nézzük
+					x = cel.getSzelesseg()-1;	//forrÃ¡s jobb oldalÃ¡n lÃ©vÅ‘ket nÃ©zzÃ¼k
 					for(int j = 0; j < forras.getListaHossz(); j++){
 						temp = forras.getPalyaelem(j);
 						if(temp.getJobb()){
-							tempPoz.x = temp.getKoord().x - temp.getMeretH()/2;	//vizsgált Pályaelem bal alsó sarka
+							tempPoz.x = temp.getKoord().x - temp.getMeretH()/2;	//vizsgÃ¡lt PÃ¡lyaelem bal alsÃ³ sarka
 							tempPoz.y = temp.getKoord().y - temp.getMeretV()/2;
 							
 							if( ((tempPoz.x <= x) && ((tempPoz.x + temp.getMeretH()) >= x)) 
@@ -216,11 +216,11 @@ public class Palya {
 					}
 					forrasRes.add(sflag);
 					sflag = false;
-					x = 0;	//cél bal oldalán lévõket nézzük
+					x = 0;	//cÃ©l bal oldalÃ¡n lÃ©vÅ‘ket nÃ©zzÃ¼k
 					for(int j = 0; j < cel.getListaHossz(); j++){
 						temp = cel.getPalyaelem(j);
 						if(temp.getBal()){
-							tempPoz.x = temp.getKoord().x - temp.getMeretH()/2;	//vizsgált Pályaelem bal alsó sarka
+							tempPoz.x = temp.getKoord().x - temp.getMeretH()/2;	//vizsgÃ¡lt PÃ¡lyaelem bal alsÃ³ sarka
 							tempPoz.y = temp.getKoord().y - temp.getMeretV()/2;
 							
 							if( ((tempPoz.x <= x) && ((tempPoz.x + temp.getMeretH()) >= x)) 
@@ -232,15 +232,15 @@ public class Palya {
 					}
 					celRes.add(sflag);
 				}
-			} else {								//a forrás van jobbra
+			} else {								//a forrÃ¡s van jobbra
 				for(int i = 0; i < cel.getMagassag(); i++){
 					y = i;
 					sflag = false;
-					x = 0;	//forrás bal oldalán lévõket nézzük
+					x = 0;	//forrÃ¡s bal oldalÃ¡n lÃ©vÅ‘ket nÃ©zzÃ¼k
 					for(int j = 0; j < forras.getListaHossz(); j++){
 						temp = forras.getPalyaelem(j);
 						if(temp.getBal()){
-							tempPoz.x = temp.getKoord().x - temp.getMeretH()/2;	//vizsgált Pályaelem bal alsó sarka
+							tempPoz.x = temp.getKoord().x - temp.getMeretH()/2;	//vizsgÃ¡lt PÃ¡lyaelem bal alsÃ³ sarka
 							tempPoz.y = temp.getKoord().y - temp.getMeretV()/2;
 							
 							if( ((tempPoz.x <= x) && ((tempPoz.x + temp.getMeretH()) >= x)) 
@@ -252,11 +252,11 @@ public class Palya {
 					}
 					forrasRes.add(sflag);
 					sflag = false;
-					x = cel.getSzelesseg()-1;	//cél jobb oldalán lévõket nézzük
+					x = cel.getSzelesseg()-1;	//cÃ©l jobb oldalÃ¡n lÃ©vÅ‘ket nÃ©zzÃ¼k
 					for(int j = 0; j < cel.getListaHossz(); j++){
 						temp = cel.getPalyaelem(j);
 						if(temp.getJobb()){
-							tempPoz.x = temp.getKoord().x - temp.getMeretH()/2;	//vizsgált Pályaelem bal alsó sarka
+							tempPoz.x = temp.getKoord().x - temp.getMeretH()/2;	//vizsgÃ¡lt PÃ¡lyaelem bal alsÃ³ sarka
 							tempPoz.y = temp.getKoord().y - temp.getMeretV()/2;
 							
 							if( ((tempPoz.x <= x) && ((tempPoz.x + temp.getMeretH()) >= x)) 
@@ -271,8 +271,8 @@ public class Palya {
 			}
 		}
 		
-		//miután végignézük a megfelelõ széleket és elmentettük minden egyes pontra azt, hogy van-e ott Pályaelem vagy nincs
-		//végignézzük a két szomszédos szél eredményhalmazát, ha egyeznek, átmehet a Játékos, ha nem, akkor pedig nem
+		//miutÃ¡n vÃ©gignÃ©zÃ¼k a megfelelÅ‘ szÃ©leket Ã©s elmentettÃ¼k minden egyes pontra azt, hogy van-e ott PÃ¡lyaelem vagy nincs
+		//vÃ©gignÃ©zzÃ¼k a kÃ©t szomszÃ©dos szÃ©l eredmÃ©nyhalmazÃ¡t, ha egyeznek, Ã¡tmehet a JÃ¡tÃ©kos, ha nem, akkor pedig nem
 		
 			
 			for(int i = 0; i < forrasRes.size(); i++){
@@ -286,18 +286,18 @@ public class Palya {
 
 	public DPalya init(int pszam) throws Exception{
 		
-		// AJTÓ MÉRETEI
-		// Ajtó szélessége
+		// AJTÃ“ MÃ‰RETEI
+		// AjtÃ³ szÃ©lessÃ©ge
 		Jatekos seged = new Jatekos(5);
 		int ajto_x = seged.getMeret();
-		// Ajtó magassága
+		// AjtÃ³ magassÃ¡ga
 		int ajto_y = 2*seged.getMeret();
 	
 
-		// KULCS MÉRETEI
-		// Kulcs szélessége
+		// KULCS MÃ‰RETEI
+		// Kulcs szÃ©lessÃ©ge
 		int kulcs_x = 30;
-		// Kulcs magassága
+		// Kulcs magassÃ¡ga
 		int kulcs_y = 16;
 		
 		palyaSzam = pszam;
@@ -306,7 +306,7 @@ public class Palya {
 		jatekosok = new ArrayList<Jatekos>();
 		tilelista = new ArrayList<Tile>();
 		
-		Tile tempT = null;		//segédváltozók
+		Tile tempT = null;		//segÃ©dvÃ¡ltozÃ³k
 		Tile kezdo = null;
 		
 		DTile tempDT = null;
@@ -315,24 +315,24 @@ public class Palya {
 		List<DTile> dtList = new ArrayList<DTile>();
 		List<DJatekos> djList = new ArrayList<DJatekos>();
 		
-		FileReader fr = null;	//segédváltozók a beolvasáshoz	
+		FileReader fr = null;	//segÃ©dvÃ¡ltozÃ³k a beolvasÃ¡shoz	
 		BufferedReader br = null;
 		String line = null;
 		String[] splitline = null;
 		Pozicio tempPoz = null;
 		
-		File f = new File(Palya.class.getProtectionDomain().getCodeSource().getLocation().getPath()); //pályákat tartalmazó mappa megnyitása
+		File f = new File(Palya.class.getProtectionDomain().getCodeSource().getLocation().getPath()); //pÃ¡lyÃ¡kat tartalmazÃ³ mappa megnyitÃ¡sa
 		f = f.getParentFile();
 		File dir = new File(f.getPath() + "\\palyak");	//megvan
 		
-		File[] children = dir.listFiles();		//pályák mappái
-		File aktTeszt = null;					//aktuális pálya
+		File[] children = dir.listFiles();		//pÃ¡lyÃ¡k mappÃ¡i
+		File aktTeszt = null;					//aktuÃ¡lis pÃ¡lya
 		
 		int m = 0;
 		if(children == null){
-			throw new Exception("Olvasasi hiba, a konyvtár nem letezik.");
+			throw new Exception("Olvasasi hiba, a konyvtÃ¡r nem letezik.");
 		} else {			
-			for(; m < children.length; m++){	//aktuális teszteset megkeresése
+			for(; m < children.length; m++){	//aktuÃ¡lis teszteset megkeresÃ©se
 				if(!children[m].getName().equals(".svn")){
 					if(Integer.parseInt(children[m].getName()) == pszam){
 						aktTeszt = children[m];
@@ -340,7 +340,7 @@ public class Palya {
 					}
 				}
 			}
-			if(palyaSzamMax == 0){//0ára van inicializálva, az elsõ init növeli valamennyire, minden további békénhagyja
+			if(palyaSzamMax == 0){//0Ã¡ra van inicializÃ¡lva, az elsÅ‘ init nÃ¶veli valamennyire, minden tovÃ¡bbi bÃ©kÃ©nhagyja
 				for(int k = 0; k < children.length; k++){
 					if((!children[k].getName().equals(".svn")) && (!children[k].getName().equals("mentes.txt"))){
 						palyaSzamMax++;
@@ -349,10 +349,10 @@ public class Palya {
 			}
 		}	
 		
-		children = aktTeszt.listFiles();		//aktuális teszteset mappájának tartalma
-												//(n+1 fájl, ahol n a Tile-ok száma, a +1 pedig a Játékosokat leíró fájl)
+		children = aktTeszt.listFiles();		//aktuÃ¡lis teszteset mappÃ¡jÃ¡nak tartalma
+												//(n+1 fÃ¡jl, ahol n a Tile-ok szÃ¡ma, a +1 pedig a JÃ¡tÃ©kosokat leÃ­rÃ³ fÃ¡jl)
 		
-		for(int i = 0; i < children.length; i++){	//minden fájlra, ami nem a Játékosokat leíró
+		for(int i = 0; i < children.length; i++){	//minden fÃ¡jlra, ami nem a JÃ¡tÃ©kosokat leÃ­rÃ³
 			if(children[i].getName().equals(".svn")){
 				
 			} else if(children[i].getName().equals("jatekos.txt")){
@@ -361,34 +361,34 @@ public class Palya {
 				fr = new FileReader(children[i]);
 				br = new BufferedReader(fr);
 				
-				if(children[i].getName().equals("tile1.txt")){	//pozício "beolvasása"
-					tempT = new Tile(1);	//aktuális fájlban tárolt Tile
+				if(children[i].getName().equals("tile1.txt")){	//pozÃ­cio "beolvasÃ¡sa"
+					tempT = new Tile(1);	//aktuÃ¡lis fÃ¡jlban tÃ¡rolt Tile
 					tempPoz = new Pozicio(0, 1);
 				} else if(children[i].getName().equals("tile2.txt")){
-					tempT = new Tile(2);	//aktuális fájlban tárolt Tile
+					tempT = new Tile(2);	//aktuÃ¡lis fÃ¡jlban tÃ¡rolt Tile
 					tempPoz = new Pozicio(1, 1);
 				} else if(children[i].getName().equals("tile3.txt")){
-					tempT = new Tile(3);	//aktuális fájlban tárolt Tile
+					tempT = new Tile(3);	//aktuÃ¡lis fÃ¡jlban tÃ¡rolt Tile
 					tempPoz = new Pozicio(0, 0);
 				}
 				
-				tempT.setKoord(tempPoz);	//beállítása
+				tempT.setKoord(tempPoz);	//beÃ¡llÃ­tÃ¡sa
 				
-				line = br.readLine();	//beolvassuk kezdõ-e				
-				if(Integer.parseInt(line) == 1){//beállítjuk és elmentjük melyik az
+				line = br.readLine();	//beolvassuk kezdÅ‘-e				
+				if(Integer.parseInt(line) == 1){//beÃ¡llÃ­tjuk Ã©s elmentjÃ¼k melyik az
 					tempT.setKezdo(true);
 					kezdo = tempT;
 				}				
 				else tempT.setKezdo(false);
 				
 				while (true) {
-					line = br.readLine();		//soronként tároljuk õket
-					if(line == null) break;		//ha vége a file-nak kilépünk
+					line = br.readLine();		//soronkÃ©nt tÃ¡roljuk Å‘ket
+					if(line == null) break;		//ha vÃ©ge a file-nak kilÃ©pÃ¼nk
 					splitline = line.split(" ");
 		
-					Palyaelem tempP = null;		//segédváltozó
+					Palyaelem tempP = null;		//segÃ©dvÃ¡ltozÃ³
 					
-					if(splitline[0].equals("a")){	//példányosítás elsõ paramétertõl függõen
+					if(splitline[0].equals("a")){	//pÃ©ldÃ¡nyosÃ­tÃ¡s elsÅ‘ paramÃ©tertÅ‘l fÃ¼ggÅ‘en
 						tempP = new Ajto( Integer.parseInt(splitline[5]) );
 						tempP.setMeret_h(ajto_x);
 						tempP.setMeret_v(ajto_y);
@@ -402,7 +402,7 @@ public class Palya {
 						tempP.setMeret_v(kulcs_y);
 					}
 					
-					//feltöltés pozícióval és mérettel
+					//feltÃ¶ltÃ©s pozÃ­ciÃ³val Ã©s mÃ©rettel
 					tempPoz = new Pozicio(Integer.parseInt(splitline[1]), Integer.parseInt(splitline[2]));
 					tempP.setPozicio(tempPoz);
 					
@@ -422,37 +422,37 @@ public class Palya {
 						tempP.setBal(true);
 					}
 					
-					tempT.init(tempP);	//átadás a Tile-nak
+					tempT.init(tempP);	//Ã¡tadÃ¡s a Tile-nak
 				}
-				tilelista.add(tempT);	//felvesszük az elkészült Tile-t a listába
+				tilelista.add(tempT);	//felvesszÃ¼k az elkÃ©szÃ¼lt Tile-t a listÃ¡ba
 				tempDT = new DTile(tempT);
 				dtList.add(tempDT);
 			}
 		}
 
 		
-		tempT = new Tile(4);		//üres Tile létrehozása
+		tempT = new Tile(4);		//Ã¼res Tile lÃ©trehozÃ¡sa
 		tempPoz = new Pozicio(1, 0);
 		tempT.setKoord(tempPoz);
 		tempT.setKezdo(false);
 		tempT.setUres();
-		tilelista.add(tempT);	//felvesszük az elkészült Tile-t a listába
+		tilelista.add(tempT);	//felvesszÃ¼k az elkÃ©szÃ¼lt Tile-t a listÃ¡ba
 
-		fr = new FileReader(children[m]);	//Játékosok bolvasása
+		fr = new FileReader(children[m]);	//JÃ¡tÃ©kosok bolvasÃ¡sa
 		br = new BufferedReader(fr);
 		
 		m = 0;
-		while (true) {	//csak annyit példányosítunk ahány van a fájlban
+		while (true) {	//csak annyit pÃ©ldÃ¡nyosÃ­tunk ahÃ¡ny van a fÃ¡jlban
 			line = br.readLine();				
-			if(line == null) break;				//ha vége a file-nak kilépünk
+			if(line == null) break;				//ha vÃ©ge a file-nak kilÃ©pÃ¼nk
 			splitline = line.split(" ");
 			
-			Jatekos tempJ = new Jatekos(m+1);	//létrehozás
-			tempPoz = new Pozicio(Integer.parseInt(splitline[0]), Integer.parseInt(splitline[1]));	//beolvasás
-			tempJ.setKezdoKoord(tempPoz);	//beállítás
+			Jatekos tempJ = new Jatekos(m+1);	//lÃ©trehozÃ¡s
+			tempPoz = new Pozicio(Integer.parseInt(splitline[0]), Integer.parseInt(splitline[1]));	//beolvasÃ¡s
+			tempJ.setKezdoKoord(tempPoz);	//beÃ¡llÃ­tÃ¡s
 			tempJ.setAktKoord(tempPoz);		//aktKoord = kezdoKoord
-			tempJ.setKezdoTile(kezdo);	//kezdõ Tile beállítása
-			tempJ.setAktTile(kezdo);		//létrehozáskor aktTile = kezdoTile
+			tempJ.setKezdoTile(kezdo);	//kezdÅ‘ Tile beÃ¡llÃ­tÃ¡sa
+			tempJ.setAktTile(kezdo);		//lÃ©trehozÃ¡skor aktTile = kezdoTile
 			jatekosok.add(tempJ);
 			tempDJ = new DJatekos(tempJ);
 			djList.add(tempDJ);
@@ -466,19 +466,19 @@ public class Palya {
 		return tempDP;
 	}
 	
-	//A két Játékos ugrását kezeli
+	//A kÃ©t JÃ¡tÃ©kos ugrÃ¡sÃ¡t kezeli
 	public void mozgatLep(Billentyu b) {
 		for(int i = 0; i < jatekosok.size(); i++){
-			if(jatekosok.get(i).getReszletes()){ 	//i. Játékos részletes nézetben van					
+			if(jatekosok.get(i).getReszletes()){ 	//i. JÃ¡tÃ©kos rÃ©szletes nÃ©zetben van					
 				jatekosok.get(i).reszletesMozgat(b);
 			}
 		}
 	}
 	
-	//A két Játékos ugrását kezeli 
+	//A kÃ©t JÃ¡tÃ©kos ugrÃ¡sÃ¡t kezeli 
 	public void mozgatUgras(Billentyu b) {
 		for(int i = 0; i < jatekosok.size(); i++){
-			if(jatekosok.get(i).getReszletes())	//i. Játékos részletes nézetben van
+			if(jatekosok.get(i).getReszletes())	//i. JÃ¡tÃ©kos rÃ©szletes nÃ©zetben van
 				jatekosok.get(i).ugras(b);	// ugrik...
 		}
 	}
@@ -507,13 +507,13 @@ public class Palya {
 	
 	
 	public void utkozesVizsgalatTile() {
-		for(Jatekos j : jatekosok){		//minden Játékosra
-			for(Tile t : tilelista){	//megnézzük melyik Tile-al
+		for(Jatekos j : jatekosok){		//minden JÃ¡tÃ©kosra
+			for(Tile t : tilelista){	//megnÃ©zzÃ¼k melyik Tile-al
 				if(j.getAktKoord().y-j.getMeret() < 0 && j.getAktTile().getKoord().y == 0) { j.meghal(); }
 				if(t.metszette(j)){		
-					//ütközött
-					if(t.interakt(j, compareTile(j.getAktTile(), t))){	//ha ütközött, kezeljük a hasonlítás eredményének függvényében
-						j.meghal();		//ha true-val tér vissza az ütközés kezelõje, akkor a Játékosnak meg kell halnia
+					//Ã¼tkÃ¶zÃ¶tt
+					if(t.interakt(j, compareTile(j.getAktTile(), t))){	//ha Ã¼tkÃ¶zÃ¶tt, kezeljÃ¼k a hasonlÃ­tÃ¡s eredmÃ©nyÃ©nek fÃ¼ggvÃ©nyÃ©ben
+						j.meghal();		//ha true-val tÃ©r vissza az Ã¼tkÃ¶zÃ©s kezelÅ‘je, akkor a JÃ¡tÃ©kosnak meg kell halnia
 					}
 				}
 			}
@@ -526,8 +526,8 @@ public class Palya {
 		}
 		Pozicio temp = null;
 		//fel = 1, le = 2, bal = 3, jobb = 4
-		if(irany == 1){								//irány alapján kiszámoljuk, hogy adott irányban milyen koordinátán kell lennie 
-			temp = ures.getKoord();					//a mozgatandó Tile-nak
+		if(irany == 1){								//irÃ¡ny alapjÃ¡n kiszÃ¡moljuk, hogy adott irÃ¡nyban milyen koordinÃ¡tÃ¡n kell lennie 
+			temp = ures.getKoord();					//a mozgatandÃ³ Tile-nak
 			temp.y = temp.y - 1;					
 		} else if(irany == 2){
 			temp = ures.getKoord();
@@ -540,15 +540,15 @@ public class Palya {
 			temp.x = temp.x - 1;		
 		}
 		
-		if( (temp.x == mozgatando.getKoord().x) && (temp.y == mozgatando.getKoord().y) ){	//megnézzük, hogy tényleg ott van-e
+		if( (temp.x == mozgatando.getKoord().x) && (temp.y == mozgatando.getKoord().y) ){	//megnÃ©zzÃ¼k, hogy tÃ©nyleg ott van-e
 			return true;		//ha ott van akkor mehet
-		} else return false;	//ha nem, akkor abba az irányba nem mozdulhatunk
+		} else return false;	//ha nem, akkor abba az irÃ¡nyba nem mozdulhatunk
 	}
 
 	public void tileMozgat(Tile ures, Tile mozgatando){
-		Pozicio temp;	//segédválozó a cseréhez
+		Pozicio temp;	//segÃ©dvÃ¡lozÃ³ a cserÃ©hez
 				
-		temp = ures.getKoord();		//a mozgatás csak a 2 Tile cseréje
+		temp = ures.getKoord();		//a mozgatÃ¡s csak a 2 Tile cserÃ©je
 		ures.setKoord(mozgatando.getKoord());
 		mozgatando.setKoord(temp);
 	}
@@ -570,18 +570,18 @@ public class Palya {
 	}
 
 	public void mentes() throws Exception{
-		File f = new File(Palya.class.getProtectionDomain().getCodeSource().getLocation().getPath()); //pályákat tartalmazó mappa megnyitása
+		File f = new File(Palya.class.getProtectionDomain().getCodeSource().getLocation().getPath()); //pÃ¡lyÃ¡kat tartalmazÃ³ mappa megnyitÃ¡sa
 		f = f.getParentFile();
 		File dir = new File(f.getPath() + "\\palyak");	//megvan
 		
-		File[] children = dir.listFiles();		//pályák mappái
+		File[] children = dir.listFiles();		//pÃ¡lyÃ¡k mappÃ¡i
 		
-		File mentes = null;					//aktuális pálya
+		File mentes = null;					//aktuÃ¡lis pÃ¡lya
 			
 		if(children == null){
-			throw new Exception("Olvasasi hiba, a fájl nem letezik.");
+			throw new Exception("Olvasasi hiba, a fÃ¡jl nem letezik.");
 		} else {			
-			for(int m = 0; m < children.length; m++){	//mentés fájl megkeresése
+			for(int m = 0; m < children.length; m++){	//mentÃ©s fÃ¡jl megkeresÃ©se
 				if(!children[m].getName().equals(".svn")){
 					if(children[m].getName().equals("mentes.txt")){
 						mentes = children[m];
@@ -596,25 +596,25 @@ public class Palya {
 			mentes.createNewFile();
 		}
 		
-		FileWriter fw = new FileWriter(mentes);	//segédváltozók a beolvasáshoz	
+		FileWriter fw = new FileWriter(mentes);	//segÃ©dvÃ¡ltozÃ³k a beolvasÃ¡shoz	
 		PrintWriter pw = new PrintWriter(fw);
 		pw.println(palyaSzam);
 		pw.close();
 	}
 	
 	public DPalya betoltes() throws Exception{
-		File f = new File(Palya.class.getProtectionDomain().getCodeSource().getLocation().getPath()); //pályákat tartalmazó mappa megnyitása
+		File f = new File(Palya.class.getProtectionDomain().getCodeSource().getLocation().getPath()); //pÃ¡lyÃ¡kat tartalmazÃ³ mappa megnyitÃ¡sa
 		f = f.getParentFile();
 		File dir = new File(f.getPath() + "\\palyak");	//megvan
 		
-		File[] children = dir.listFiles();		//pályák mappái
+		File[] children = dir.listFiles();		//pÃ¡lyÃ¡k mappÃ¡i
 		
-		File mentes = null;					//aktuális pálya
+		File mentes = null;					//aktuÃ¡lis pÃ¡lya
 			
 		if(children == null){
-			throw new Exception("Olvasasi hiba, a fájl nem letezik.");
+			throw new Exception("Olvasasi hiba, a fÃ¡jl nem letezik.");
 		} else {			
-			for(int m = 0; m < children.length; m++){	//mentés fájl megkeresése
+			for(int m = 0; m < children.length; m++){	//mentÃ©s fÃ¡jl megkeresÃ©se
 				if(!children[m].getName().equals(".svn")){
 					if(children[m].getName().equals("mentes.txt")){
 						mentes = children[m];
@@ -627,13 +627,13 @@ public class Palya {
 		if(mentes == null){
 			mentes = new File(dir.getPath() + "\\mentes.txt");
 			mentes.createNewFile();
-			FileWriter fw = new FileWriter(mentes);	//segédváltozók a beolvasáshoz	
+			FileWriter fw = new FileWriter(mentes);	//segÃ©dvÃ¡ltozÃ³k a beolvasÃ¡shoz	
 			PrintWriter pw = new PrintWriter(fw);
 			pw.println(1);
 			pw.close();
 		}	
 		
-		FileReader fr = new FileReader(mentes);	//segédváltozók a beolvasáshoz	
+		FileReader fr = new FileReader(mentes);	//segÃ©dvÃ¡ltozÃ³k a beolvasÃ¡shoz	
 		BufferedReader br = new BufferedReader(fr);
 		String line = null;
 		
@@ -650,7 +650,7 @@ public class Palya {
 
 	public DPalya kovPalya() throws Exception{
 		
-		// ha nem értünk még a pályák végére, akkor jön a következõ, ha végigértünk, akkor betöltjük majd újból az utolsó pályát
+		// ha nem Ã©rtÃ¼nk mÃ©g a pÃ¡lyÃ¡k vÃ©gÃ©re, akkor jÃ¶n a kÃ¶vetkezÅ‘, ha vÃ©gigÃ©rtÃ¼nk, akkor betÃ¶ltjÃ¼k majd ÃºjbÃ³l az utolsÃ³ pÃ¡lyÃ¡t
 		if(palyaSzam<palyaSzamMax){
 			palyaSzam++;
 		}

@@ -5,56 +5,56 @@ import java.awt.Graphics;
 
 public class DJatekos {
 
-	// KirajzolandÛ j·tÈkos
+	// Kirajzoland√≥ j√°t√©kos
 	private Jatekos jatekos;
 	
 	public DJatekos(Jatekos j){
 		jatekos=j;
 	}
 	
-	// J·tÈkos kirajzol·sa
+	// J√°t√©kos kirajzol√°sa
 	public void draw(Graphics g, int koz) {
-		// A j·tÈkos aktu·lis tile-a
+		// A j√°t√©kos aktu√°lis tile-a
 		Tile tile = jatekos.getAktTile();
-		// A kirajzolandÛ tile LOGIKAI pozÌciÛja
+		// A kirajzoland√≥ tile LOGIKAI poz√≠ci√≥ja
 		Pozicio tilepoz = tile.getKoord();
-		// y koordin·t·k invert·l·sa
+		// y koordin√°t√°k invert√°l√°sa
 		tilepoz.y = 1-tilepoz.y;
-		// Tile szÈlessÈge
+		// Tile sz√©less√©ge
 		int tileszeles = tile.getSzelesseg();
-		// Tile magass·ga
+		// Tile magass√°ga
 		int tilemagas = tile.getMagassag();
-		// Tile-ok kˆzˆtti rÈs
+		// Tile-ok k√∂z√∂tti r√©s
 		int gap = koz;
-		// KirajzolandÛ j·tÈkos Tile-j·nak bal felsı pontj·nak GRAFIKUS koordin·t·i
+		// Kirajzoland√≥ j√°t√©kos Tile-j√°nak bal fels≈ë pontj√°nak GRAFIKUS koordin√°t√°i
 		Pozicio jatekospoz = new Pozicio(gap+tilepoz.x*(tileszeles+gap),gap+tilepoz.y*(tilemagas+gap));
-		// A kirajzolandÛ j·tÈkos koordin·t·i
+		// A kirajzoland√≥ j√°t√©kos koordin√°t√°i
 		jatekospoz.x+=jatekos.getAktKoord().x;
 		jatekospoz.y+=jatekos.getAktTile().getMagassag();
 		jatekospoz.y-=jatekos.getAktKoord().y;
-		// A kirajzolandÛ j·tÈkos bal felsı sarka
+		// A kirajzoland√≥ j√°t√©kos bal fels≈ë sarka
 		jatekospoz.x-=jatekos.getMeret()/2;
 		jatekospoz.y-=jatekos.getMeret();
 		
-		String nezet = "¡ttekintı nÈzet";
+		String nezet = "√Åttekint≈ë n√©zet";
 		if (jatekos.getReszletes()) {
-			nezet = "RÈszletes nÈzet";
+			nezet = "R√©szletes n√©zet";
 		}
 		
-		// 1-es j·tÈkos
+		// 1-es j√°t√©kos
 		if (jatekos.getSzam()==1){
-			// K…K
+			// K√âK
 			g.setColor(Color.blue);
 			g.fillRect(jatekospoz.x,jatekospoz.y,jatekos.getMeret()+1,jatekos.getMeret()*2+1);
 			g.setColor(Color.black);
-			g.drawString("J·tÈkos 1: " + nezet, gap, 4*gap+tilemagas*2+10);
+			g.drawString("J√°t√©kos 1: " + nezet, gap, 4*gap+tilemagas*2+10);
 		}else{
-		// 2-es j·tÈkos
+		// 2-es j√°t√©kos
 			// LILA
 			g.setColor(Color.magenta);
 			g.fillRect(jatekospoz.x,jatekospoz.y,jatekos.getMeret()+1,jatekos.getMeret()*2+1);	
 			g.setColor(Color.black);
-			g.drawString("J·tÈkos 2: " + nezet, 2*gap+1*tileszeles, 4*gap+tilemagas*2+10);
+			g.drawString("J√°t√©kos 2: " + nezet, 2*gap+1*tileszeles, 4*gap+tilemagas*2+10);
 		}
 	}
 	

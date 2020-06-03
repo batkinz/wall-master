@@ -8,8 +8,8 @@ public class Ajto extends Palyaelem{
 		this.zarakSzama = zarakSzama;
 	}
 	
-	// ha a z·rak sz·ma megegyezik a j·tÈkos
-	// kulcsainak sz·m·val, a j·tÈkos kimehet
+	// ha a z√°rak sz√°ma megegyezik a j√°t√©kos
+	// kulcsainak sz√°m√°val, a j√°t√©kos kimehet
 	public boolean interakt(Jatekos j){
 		if(j.getKulcsSzam()==zarakSzama){
 			return true;

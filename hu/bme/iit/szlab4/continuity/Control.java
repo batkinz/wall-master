@@ -10,7 +10,7 @@ import javax.swing.Timer;
 public class Control implements KeyListener, ActionListener {
 	// a palya obejktum
 	private static Palya palya;
-	// grafika osztály a kirajzolás/frissítés inicializálásához
+	// grafika osztÃ¡ly a kirajzolÃ¡s/frissÃ­tÃ©s inicializÃ¡lÃ¡sÃ¡hoz
 	private Grafika grafika;
 	// TICK, 40 ms
 	private Timer timer = new Timer(40,this);
@@ -20,39 +20,39 @@ public class Control implements KeyListener, ActionListener {
 		palya = new Palya();
 	}
 	
-	// a grafika hívja meg, a menüben kattintott állapottal
+	// a grafika hÃ­vja meg, a menÃ¼ben kattintott Ã¡llapottal
 	public void run(Allapot allapot) throws Exception {
 		DPalya tmpDPalya;
 		switch(allapot){
-			// mentett játék indítása
+			// mentett jÃ¡tÃ©k indÃ­tÃ¡sa
 			case jatek:
 				tmpDPalya = palya.betoltes();
 				grafika.setdpalya(tmpDPalya);
 				timer.start();
 				break;
-			// játék kezdése elölrõl
+			// jÃ¡tÃ©k kezdÃ©se elÃ¶lrÅ‘l
 			case ujJatek:
 				tmpDPalya = palya.ujJatek();
 				grafika.setdpalya(tmpDPalya);
 				timer.start();
 				break;
-			// visszatérés a belsõ menübõl a játékba
+			// visszatÃ©rÃ©s a belsÅ‘ menÃ¼bÅ‘l a jÃ¡tÃ©kba
 			case folytat:
 				timer.start();
 				break;
-			// aktuális pálya újrakezdése
+			// aktuÃ¡lis pÃ¡lya ÃºjrakezdÃ©se
 			case ujrakezd:
 				tmpDPalya = palya.resetPalya();
 				grafika.setdpalya(tmpDPalya);
 				timer.start();
 				break;
-			// az aktuális pálya átugrása, a következõ indítása
+			// az aktuÃ¡lis pÃ¡lya Ã¡tugrÃ¡sa, a kÃ¶vetkezÅ‘ indÃ­tÃ¡sa
 			case atugras:
 				tmpDPalya = palya.kovPalya();
 				grafika.setdpalya(tmpDPalya);
 				timer.start();
 				break;
-			// mentés és kilépés
+			// mentÃ©s Ã©s kilÃ©pÃ©s
 			case mentkilep:
 				palya.mentes();
 				break;
@@ -61,9 +61,9 @@ public class Control implements KeyListener, ActionListener {
 		}
 	}
 	
-	// A Billentyû struktúra
+	// A BillentyÅ± struktÃºra
 	private Billentyu bill = new Billentyu();
-	// ugrás emlékezõ bit
+	// ugrÃ¡s emlÃ©kezÅ‘ bit
 	private boolean j1ugrik=false;
 	private boolean j2ugrik=false;
 
@@ -73,7 +73,7 @@ public class Control implements KeyListener, ActionListener {
 		char tmpKar = arg0.getKeyChar();
 		int tmpCode = arg0.getKeyCode();
 		
-		// kilépés
+		// kilÃ©pÃ©s
 		if(tmpCode==KeyEvent.VK_ESCAPE && !grafika.isKeszitokPanelShowing()
 				&& !grafika.isKulsoMenuShowing()){
 			timer.stop();
@@ -81,9 +81,9 @@ public class Control implements KeyListener, ActionListener {
 			return;
 		}
 		
-		// 1. játékos irányítása (nyilak)
+		// 1. jÃ¡tÃ©kos irÃ¡nyÃ­tÃ¡sa (nyilak)
 		
-		// ugrás csak egyszer
+		// ugrÃ¡s csak egyszer
 		if(tmpCode==KeyEvent.VK_UP && !j1ugrik){
 			j1ugrik=true;
 			bill.j1_fel=true;
@@ -101,7 +101,7 @@ public class Control implements KeyListener, ActionListener {
 			bill.j1_nezet=true;
 		}
 		
-		// 2. játékos irányítása (WASD)
+		// 2. jÃ¡tÃ©kos irÃ¡nyÃ­tÃ¡sa (WASD)
 		switch(tmpKar){
 			case 'w':
 			case 'W':
@@ -137,7 +137,7 @@ public class Control implements KeyListener, ActionListener {
 		char tmpKar = arg0.getKeyChar();
 		int tmpCode = arg0.getKeyCode();
 	
-		// 1. játékos irányítása (nyilak)
+		// 1. jÃ¡tÃ©kos irÃ¡nyÃ­tÃ¡sa (nyilak)
 		if(tmpCode==KeyEvent.VK_UP){
 			bill.j1_fel=false;
 			j1ugrik=false;
@@ -152,7 +152,7 @@ public class Control implements KeyListener, ActionListener {
 			bill.j1_jobb=false;
 		}
 		
-		// 2. játékos irányítása (WASD)
+		// 2. jÃ¡tÃ©kos irÃ¡nyÃ­tÃ¡sa (WASD)
 		switch(tmpKar){
 			case 'w':
 			case 'W':
@@ -201,7 +201,7 @@ public class Control implements KeyListener, ActionListener {
 		palya.utkozesVizsgalat();
 		bill.j1_nezet=false;
 		bill.j2_nezet=false;
-		// 1. ugrás után false-ra állítjuk az értékét
+		// 1. ugrÃ¡s utÃ¡n false-ra Ã¡llÃ­tjuk az Ã©rtÃ©kÃ©t
 		bill.j1_fel=false;
 		bill.j2_fel=false;
 	}

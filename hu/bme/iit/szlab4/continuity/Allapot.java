@@ -1,17 +1,17 @@
 package hu.bme.iit.szlab4.continuity;
 
 /*
- * Külsõ menübõl érkezõ parancsok:
- * 		jatek: 		Mentett játék indítása
- * 		ujJatek: 	Új játék indítása
- * 		keszitok:	Készítõk panel megjelenítése - Grafika osztályban kezelve
- * 		Kilep:		Kilépés mentés nélkül - Grafika osztályban kezelve
+ * KÃ¼lsÅ‘ menÃ¼bÅ‘l Ã©rkezÅ‘ parancsok:
+ * 		jatek: 		Mentett jÃ¡tÃ©k indÃ­tÃ¡sa
+ * 		ujJatek: 	Ãšj jÃ¡tÃ©k indÃ­tÃ¡sa
+ * 		keszitok:	KÃ©szÃ­tÅ‘k panel megjelenÃ­tÃ©se - Grafika osztÃ¡lyban kezelve
+ * 		Kilep:		KilÃ©pÃ©s mentÃ©s nÃ©lkÃ¼l - Grafika osztÃ¡lyban kezelve
  * 
- * Belsõ menübõl érkezõ parancsok:
- * 		folytat:	Belsõ menü eltüntetése, játék folytatása
- * 		ujrakezd:	Az adott pálya újrakezdése
- * 		atugras:	Pálya átugrása
- * 		mentkilep:	Játék mentése és kilépés a fõmenübe
+ * BelsÅ‘ menÃ¼bÅ‘l Ã©rkezÅ‘ parancsok:
+ * 		folytat:	BelsÅ‘ menÃ¼ eltÃ¼ntetÃ©se, jÃ¡tÃ©k folytatÃ¡sa
+ * 		ujrakezd:	Az adott pÃ¡lya ÃºjrakezdÃ©se
+ * 		atugras:	PÃ¡lya Ã¡tugrÃ¡sa
+ * 		mentkilep:	JÃ¡tÃ©k mentÃ©se Ã©s kilÃ©pÃ©s a fÅ‘menÃ¼be
  */
 
 public enum Allapot {

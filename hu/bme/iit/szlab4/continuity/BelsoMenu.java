@@ -12,15 +12,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class BelsoMenu extends JPanel {
-	// Játék folytatása gomb
+	// JÃ¡tÃ©k folytatÃ¡sa gomb
 	private final JButton btnFolytatas;
-	// Pálya újrakezdése gomb
+	// PÃ¡lya ÃºjrakezdÃ©se gomb
 	private final JButton btnUjrakezd;
-	// Pálya átugrása gomb
+	// PÃ¡lya Ã¡tugrÃ¡sa gomb
 	private final JButton btnAtugras;
-	// Mentés és kilépés gomb
+	// MentÃ©s Ã©s kilÃ©pÃ©s gomb
 	private final JButton btnMentKilep;
-	// Referencia a fõablakra
+	// Referencia a fÅ‘ablakra
 	private final Grafika graf;
 	private final JLabel lblNewLabel;
 

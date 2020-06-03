@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 public class KeszitokPanel extends JPanel {
 	
-	// Referencia a fıablakra
+	// Referencia a f≈ëablakra
 	private final Grafika graf;
 
 	/**

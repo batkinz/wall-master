@@ -1,28 +1,28 @@
 package hu.bme.iit.szlab4.continuity;
 
 public class Billentyu {
-	//j1 játékos balra billentyûje
+	//j1 jÃ¡tÃ©kos balra billentyÅ±je
 	public boolean j1_jobb;
-	//j1 játékos jobbra billentyûje
+	//j1 jÃ¡tÃ©kos jobbra billentyÅ±je
 	public boolean j1_bal;
-	//j1 játékos ugrás billentyûje
+	//j1 jÃ¡tÃ©kos ugrÃ¡s billentyÅ±je
 	public boolean j1_fel;
-	//j1 játékos les billentyûje
+	//j1 jÃ¡tÃ©kos les billentyÅ±je
 	public boolean j1_le;
-	//j1 játékos nézetváltás billentyûje
+	//j1 jÃ¡tÃ©kos nÃ©zetvÃ¡ltÃ¡s billentyÅ±je
 	public boolean j1_nezet;
-	//j2 játékos balra billentyûje
+	//j2 jÃ¡tÃ©kos balra billentyÅ±je
 	public boolean j2_jobb;
-	//j2 játékos jobbra billentyûje
+	//j2 jÃ¡tÃ©kos jobbra billentyÅ±je
 	public boolean j2_bal;
-	//j2 játékos ugrás billentyûje
+	//j2 jÃ¡tÃ©kos ugrÃ¡s billentyÅ±je
 	public boolean j2_fel;
-	//j2 játékos les billentyûje
+	//j2 jÃ¡tÃ©kos les billentyÅ±je
 	public boolean j2_le;
-	//j2 játékos nézetváltás billentyûje
+	//j2 jÃ¡tÃ©kos nÃ©zetvÃ¡ltÃ¡s billentyÅ±je
 	public boolean j2_nezet;
 	
-	// üres konstrukor
+	// Ã¼res konstrukor
 	public Billentyu(){
 		j1_jobb=false;
 		j1_bal=false;

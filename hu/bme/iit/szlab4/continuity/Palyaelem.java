@@ -1,13 +1,13 @@
 package hu.bme.iit.szlab4.continuity;
 
 public abstract class Palyaelem {
-	// hozz·Èr-e a tile valamelyik oldal·hoz
+	// hozz√°√©r-e a tile valamelyik oldal√°hoz
 	protected boolean bal,jobb,fent,lent;
-	// vÌzszintes kiterjedÈs
+	// v√≠zszintes kiterjed√©s
 	protected int meret_h;
-	// f¸ggıleges kiterjedÈs
+	// f√ºgg≈ëleges kiterjed√©s
 	protected int meret_v;
-	// a p·lyaelem baj alsÛ cs¸cske
+	// a p√°lyaelem baj als√≥ cs√ºcske
 	protected Pozicio palyaElemPoz;
 	
 	public abstract boolean interakt(Jatekos j);
@@ -24,12 +24,12 @@ public abstract class Palyaelem {
 		return new Pozicio(palyaElemPoz.x,palyaElemPoz.y);
 	}
 	
-	// kisz·molja, hogy a j·tÈkos metszi-e a p·lyaelemet
+	// kisz√°molja, hogy a j√°t√©kos metszi-e a p√°lyaelemet
 	public boolean metszette(Jatekos j){
 		
-		/*A j·tÈkos a 4 koordin·t·j·t kisz·moljuk
-		 * - alapÈrtelmezetten a kˆzÈpsı 
-		 * az ·tl·thatÛs·g ÈrdekÈben:
+		/*A j√°t√©kos a 4 koordin√°t√°j√°t kisz√°moljuk
+		 * - alap√©rtelmezetten a k√∂z√©ps≈ë 
+		 * az √°tl√°that√≥s√°g √©rdek√©ben:
 		 *  
 		 *  jp4------jp3
 		 *  |        |
@@ -43,25 +43,25 @@ public abstract class Palyaelem {
 	
 		 
 		
-		// j·tÈkos aktu·lis koordin·t·ja
+		// j√°t√©kos aktu√°lis koordin√°t√°ja
 		Pozicio jAkt = j.getAktKoord();
 		int jMeret = j.getMeret()/2;
 		
-		// bal alsÛ sarka
+		// bal als√≥ sarka
 		Pozicio jp1 = new Pozicio(jAkt.x-jMeret,jAkt.y-2*jMeret);
-		// jobb felsı sarka
+		// jobb fels≈ë sarka
 		Pozicio jp3 = new Pozicio(jAkt.x+jMeret,jAkt.y+2*jMeret);
 
 		
-		// a p·lyaelem bal alsÛ sarka
+		// a p√°lyaelem bal als√≥ sarka
 		Pozicio balalso = new Pozicio(palyaElemPoz.x-meret_h/2,palyaElemPoz.y-meret_v/2);
 						
-		// a p·lyaelem jobb felsı sarka
+		// a p√°lyaelem jobb fels≈ë sarka
 		Pozicio jobbfelso = new Pozicio(palyaElemPoz.x+meret_h/2, palyaElemPoz.y+meret_v/2);
 		boolean xmetszi = false;
 		boolean ymetszi = false;
 		int atfed = 0;
-		//vÌzszintesen
+		//v√≠zszintesen
 		if (jp1.x < balalso.x) {
 	        atfed = balalso.x - jp3.x;
 	    } else {
@@ -71,7 +71,7 @@ public abstract class Palyaelem {
 		if(atfed <= 0)
 			xmetszi = true;
 		
-		//f¸ggılegesen
+		//f√ºgg≈ëlegesen
 		if (jp1.y < balalso.y) {
 	        atfed = balalso.y - jp3.y;
 	    } else {

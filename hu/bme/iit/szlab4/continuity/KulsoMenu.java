@@ -13,15 +13,15 @@ import javax.swing.JPanel;
 
 public class KulsoMenu extends JPanel {
 	
-	// Játék gomb
+	// JÃ¡tÃ©k gomb
 	private final JButton btnJatek;
-	// Új játék gomb
+	// Ãšj jÃ¡tÃ©k gomb
 	private final JButton btnUjJatek;
 	// Keszitok gomb
 	private final JButton btnKeszitok;
-	// Kilépés gomb
+	// KilÃ©pÃ©s gomb
 	private final JButton btnKilep;
-	// Referencia a fõablakra
+	// Referencia a fÅ‘ablakra
 	private final Grafika graf;
 	private final JLabel label;
 	

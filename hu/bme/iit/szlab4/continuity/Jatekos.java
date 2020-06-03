@@ -14,7 +14,7 @@ public class Jatekos {
 	private final Pozicio kezdoKoord;
 	private Tile aktTile;
 	private Tile kezdoTile;
-	private final int szam; // Ebbõl a paraméterbõl tudja majd a játékos, hogy melyik billentyûkre kell reagálnia.
+	private final int szam; // EbbÅ‘l a paramÃ©terbÅ‘l tudja majd a jÃ¡tÃ©kos, hogy melyik billentyÅ±kre kell reagÃ¡lnia.
 	private boolean ugrik;
 	private final int lepes = 7;
 	
@@ -39,33 +39,33 @@ public class Jatekos {
 		return ugrik;
 	}
 		
-	//Ez a függvény kezeli a tile-ok között történõ mozgásért.
+	//Ez a fÃ¼ggvÃ©ny kezeli a tile-ok kÃ¶zÃ¶tt tÃ¶rtÃ©nÅ‘ mozgÃ¡sÃ©rt.
 	public void atmegy(Tile t){
-		//ha a céltile tõlünk jobbra van ...
+		//ha a cÃ©ltile tÅ‘lÃ¼nk jobbra van ...
 		if (t.getKoord().x>aktTile.getKoord().x)
 		{
-			//az új tile bal oldalára kerülünk
+			//az Ãºj tile bal oldalÃ¡ra kerÃ¼lÃ¼nk
 			aktKoord.x = meret/2;			
 		}
-		//ha a céltile tõlünk balra van ...
+		//ha a cÃ©ltile tÅ‘lÃ¼nk balra van ...
 		else if(t.getKoord().x<aktTile.getKoord().x)
 		{
-			// az új tile jobb oldalára kerülünk
+			// az Ãºj tile jobb oldalÃ¡ra kerÃ¼lÃ¼nk
 			aktKoord.x = aktTile.getSzelesseg()-meret/2-1;
 		}
-		//Ha a céltile alattunk van ...
+		//Ha a cÃ©ltile alattunk van ...
 		else if(t.getKoord().y<aktTile.getKoord().y)
 		{
-			// az új tile tetejére kerülünk
-			aktKoord.y = aktTile.getMagassag()-meret-1; // EZT JAVÍTOTTUK MERT A JÁTÉKOS TÉGLALAP ALAKÚ
+			// az Ãºj tile tetejÃ©re kerÃ¼lÃ¼nk
+			aktKoord.y = aktTile.getMagassag()-meret-1; // EZT JAVÃTOTTUK MERT A JÃTÃ‰KOS TÃ‰GLALAP ALAKÃš
 		}
-		//ha a céltile felettünk van ...
+		//ha a cÃ©ltile felettÃ¼nk van ...
 		else if(t.getKoord().y>aktTile.getKoord().y)
 		{
-			// az új tile aljára kerülünk
-			aktKoord.y = meret+1;  // EZT JAVÍTOTTUK MERT A JÁTÉKOS TÉGLALAP ALAKÚ
+			// az Ãºj tile aljÃ¡ra kerÃ¼lÃ¼nk
+			aktKoord.y = meret+1;  // EZT JAVÃTOTTUK MERT A JÃTÃ‰KOS TÃ‰GLALAP ALAKÃš
 		}
-		// Új tile-referencia beállítása
+		// Ãšj tile-referencia beÃ¡llÃ­tÃ¡sa
 		aktTile = t;
 	}
 	//ugras getter
@@ -108,58 +108,58 @@ public class Jatekos {
 		
 		return reszletes;		
 	}
-	//Ez a függvény kezeli azt, ha a játékos felvesz egy kulcsot
+	//Ez a fÃ¼ggvÃ©ny kezeli azt, ha a jÃ¡tÃ©kos felvesz egy kulcsot
 	public void kulcsFelvesz(){
-		//megnöveljük a kulcsszámot eggyel
+		//megnÃ¶veljÃ¼k a kulcsszÃ¡mot eggyel
 		kulcsSzam++;
 	}
-	//Ez a függvény a játékos halálakor hívódik
+	//Ez a fÃ¼ggvÃ©ny a jÃ¡tÃ©kos halÃ¡lakor hÃ­vÃ³dik
 	public void meghal(){
-		//Az új aktuális tile a kezdõtile
+		//Az Ãºj aktuÃ¡lis tile a kezdÅ‘tile
 		aktTile=kezdoTile;
-		//Az új aktuális koord a kezdõkoord
+		//Az Ãºj aktuÃ¡lis koord a kezdÅ‘koord
 		aktKoord=new Pozicio(kezdoKoord.x,kezdoKoord.y);
 		ugras = 0;
 		xSeb = 0;
 		ugrik = false;
 	}
-	//Ez a függvény mozgatja majd a játékost a lenyomott billentyû függvényében
+	//Ez a fÃ¼ggvÃ©ny mozgatja majd a jÃ¡tÃ©kost a lenyomott billentyÅ± fÃ¼ggvÃ©nyÃ©ben
 	public void reszletesMozgat(Billentyu b){
-		//jobbra mozgás
-		//a feltétel: HA az 1-es játékosról van szó, akkor a j1_jobb gombot nézzük, ha a 2-esrõl, akkor a j2_jobbot
+		//jobbra mozgÃ¡s
+		//a feltÃ©tel: HA az 1-es jÃ¡tÃ©kosrÃ³l van szÃ³, akkor a j1_jobb gombot nÃ©zzÃ¼k, ha a 2-esrÅ‘l, akkor a j2_jobbot
 		if (((szam==1)&&(b.j1_jobb==true) || (szam==2)&&(b.j2_jobb)))
 		{
 			xSeb = lepes;
-			// ha jobbra mozog a játékos, akkor megnöveljük az x koordinátájának értékét
+			// ha jobbra mozog a jÃ¡tÃ©kos, akkor megnÃ¶veljÃ¼k az x koordinÃ¡tÃ¡jÃ¡nak Ã©rtÃ©kÃ©t
 			aktKoord.x+=xSeb;
-			// ha oldalra kimennénk a tile-ból...
+			// ha oldalra kimennÃ©nk a tile-bÃ³l...
 			if(aktKoord.x+meret/2>aktTile.getSzelesseg() && aktTile.getKoord().x==1)
 				aktKoord.x = aktTile.getSzelesseg()-meret/2+1;
-			// MÓDOSÍTJUK A SZÖGET
+			// MÃ“DOSÃTJUK A SZÃ–GET
 			szog = (int) Math.toDegrees(Math.atan(ugras/xSeb));
 			if(szog<0) szog += 360;
 			
 		}
-		//balra mozgás
-		//a feltétel: HA az 1-es játékosról van szó, akkor a j1_bal gombot nézzük, ha a 2-esrõl, akkor a j2_balt
+		//balra mozgÃ¡s
+		//a feltÃ©tel: HA az 1-es jÃ¡tÃ©kosrÃ³l van szÃ³, akkor a j1_bal gombot nÃ©zzÃ¼k, ha a 2-esrÅ‘l, akkor a j2_balt
 		else if(((szam==1)&&(b.j1_bal==true) || (szam==2)&&(b.j2_bal)))
 		{
 			xSeb = -1*lepes;
-			//ha balra mozog a játékos, akkor csökkentjük az x koordinátájának értékét
+			//ha balra mozog a jÃ¡tÃ©kos, akkor csÃ¶kkentjÃ¼k az x koordinÃ¡tÃ¡jÃ¡nak Ã©rtÃ©kÃ©t
 			aktKoord.x+=xSeb;
 			if(aktKoord.x-meret/2<=0 && aktTile.getKoord().x==0)
 				aktKoord.x = meret/2;
-			// MÓDOSÍTJUK A SZÖGET
+			// MÃ“DOSÃTJUK A SZÃ–GET
 			szog = (int) Math.toDegrees(Math.atan(ugras/xSeb));
 			if(szog<0) szog += 360;
 		} else {
 			xSeb = 0;
-			aktKoord.x += xSeb; //jelzésként van csak itt, nem megyünk se jobbra se balra
-			//MÓDOSÍTJUK A SZÖGET
-			if(ugras >= 0){	//csak az Y komponens érvényes a sebességbõl
-				szog = 90;	//ha az felfelé mutat...
+			aktKoord.x += xSeb; //jelzÃ©skÃ©nt van csak itt, nem megyÃ¼nk se jobbra se balra
+			//MÃ“DOSÃTJUK A SZÃ–GET
+			if(ugras >= 0){	//csak az Y komponens Ã©rvÃ©nyes a sebessÃ©gbÅ‘l
+				szog = 90;	//ha az felfelÃ© mutat...
 			} else {
-				szog = 270;	//ha az lefelé mutat...
+				szog = 270;	//ha az lefelÃ© mutat...
 			}
 		}
 	}
@@ -185,7 +185,7 @@ public class Jatekos {
 	public void setReszletes(boolean nezet){
 		reszletes=nezet;
 	}
-	//Ez a függvény állítja be az ugrás értékét a defaultra, amennyiben egy játékos földet ér.
+	//Ez a fÃ¼ggvÃ©ny Ã¡llÃ­tja be az ugrÃ¡s Ã©rtÃ©kÃ©t a defaultra, amennyiben egy jÃ¡tÃ©kos fÃ¶ldet Ã©r.
 	public void setToDefaultUgras(){
 		ugras=defaultUgras;
 	}
@@ -194,34 +194,34 @@ public class Jatekos {
 		ugras=ujUgras;
 	}
 	
-	// Ez a függvény kezeli az ugrást
+	// Ez a fÃ¼ggvÃ©ny kezeli az ugrÃ¡st
 	public void ugras(Billentyu b){
 		
-		//a gravitáció értéke
+		//a gravitÃ¡ciÃ³ Ã©rtÃ©ke
 		int grav = 5;
 		
-		if(szam == 1){	//1. Játékos
+		if(szam == 1){	//1. JÃ¡tÃ©kos
 				if(b.j1_fel && !ugrik){
 					ugrik = true;
 					ugras = defaultUgras;
 				}
-				//az ugrás értékét csökkentjük a gravitáció által,
-				// bizonyos határokig
+				//az ugrÃ¡s Ã©rtÃ©kÃ©t csÃ¶kkentjÃ¼k a gravitÃ¡ciÃ³ Ã¡ltal,
+				// bizonyos hatÃ¡rokig
 				if(ugras>=-20)
 					ugras -= grav;
-				//aktuális függõleges irányú koordinátához hozzáadjuk az ugrás értékét
+				//aktuÃ¡lis fÃ¼ggÅ‘leges irÃ¡nyÃº koordinÃ¡tÃ¡hoz hozzÃ¡adjuk az ugrÃ¡s Ã©rtÃ©kÃ©t
 				aktKoord.y += ugras;
 				ugrik = true;
 				if (aktTile.getKoord().y==1 && aktKoord.y+meret>aktTile.getMagassag()){
 					aktKoord.y = aktTile.getMagassag()-meret-1;
 					ugras = 0;
 				}
-				// majd az elõzõ x sebességgel és a módosított y sebességgel újraszámoljuk az irányt
+				// majd az elÅ‘zÅ‘ x sebessÃ©ggel Ã©s a mÃ³dosÃ­tott y sebessÃ©ggel ÃºjraszÃ¡moljuk az irÃ¡nyt
 				if(xSeb==0){
-					if(ugras >= 0){	//csak az Y komponens érvényes a sebességbõl
-						szog = 90;	//ha az felfelé mutat...
+					if(ugras >= 0){	//csak az Y komponens Ã©rvÃ©nyes a sebessÃ©gbÅ‘l
+						szog = 90;	//ha az felfelÃ© mutat...
 					} else {
-						szog = 270;	//ha az lefelé mutat...
+						szog = 270;	//ha az lefelÃ© mutat...
 					}
 				}
 				else {
@@ -230,24 +230,24 @@ public class Jatekos {
 				}
 		}
 		
-		if(szam == 2){	//2. Játékos
+		if(szam == 2){	//2. JÃ¡tÃ©kos
 				if(b.j2_fel && !ugrik){
 					ugrik = true;
 					ugras = defaultUgras;
 				}				
 				
-				//az ugrás értékét csökkentjük a gravitáció által
+				//az ugrÃ¡s Ã©rtÃ©kÃ©t csÃ¶kkentjÃ¼k a gravitÃ¡ciÃ³ Ã¡ltal
 				ugras -= grav;
-				//aktuális függõleges irányú koordinátához hozzáadjuk az ugrás értékét
+				//aktuÃ¡lis fÃ¼ggÅ‘leges irÃ¡nyÃº koordinÃ¡tÃ¡hoz hozzÃ¡adjuk az ugrÃ¡s Ã©rtÃ©kÃ©t
 				aktKoord.y += ugras;				
 				
 				ugrik = true;
-				// majd az elõzõ x sebességgel és a módosított y sebességgel újraszámoljuk az irányt
+				// majd az elÅ‘zÅ‘ x sebessÃ©ggel Ã©s a mÃ³dosÃ­tott y sebessÃ©ggel ÃºjraszÃ¡moljuk az irÃ¡nyt
 				if(xSeb==0){
-					if(ugras >= 0){	//csak az Y komponens érvényes a sebességbõl
-						szog = 90;	//ha az felfelé mutat...
+					if(ugras >= 0){	//csak az Y komponens Ã©rvÃ©nyes a sebessÃ©gbÅ‘l
+						szog = 90;	//ha az felfelÃ© mutat...
 					} else {
-						szog = 270;	//ha az lefelé mutat...
+						szog = 270;	//ha az lefelÃ© mutat...
 					}
 				}
 				else {

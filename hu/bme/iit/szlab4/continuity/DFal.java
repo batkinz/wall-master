@@ -4,16 +4,16 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class DFal extends DPalyaelem{
-	// A kirajzolandÛ fal
+	// A kirajzoland√≥ fal
 	private Fal elem;
 	
 	@Override
-	// Kirajzol·s
+	// Kirajzol√°s
 	public void draw(Graphics g, Pozicio balfelso) {
-		// A kirajzol·s helyÈnek kisz·mol·s·hoz kell
+		// A kirajzol√°s hely√©nek kisz√°mol√°s√°hoz kell
 		Tile t = new Tile(100);
 		
-		// A kirajzolandÛ fal bal felsı sarka
+		// A kirajzoland√≥ fal bal fels≈ë sarka
 		Pozicio poz = new Pozicio(balfelso.x+elem.getKoord().x-elem.getMeretH()/2, balfelso.y+(t.getMagassag()-elem.getKoord().y)-elem.getMeretV()/2);
 		
 		g.setColor(Color.black);

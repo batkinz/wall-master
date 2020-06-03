@@ -12,15 +12,15 @@ public class Grafika{
 
 	private JFrame frmWallMaster;
 
-	// Referencia a panelra, amin majd a többi panel fog elhelyezkedni
+	// Referencia a panelra, amin majd a tÃ¶bbi panel fog elhelyezkedni
 	private static JPanel panel;
-	// Referencia a külsõ menû panelre
+	// Referencia a kÃ¼lsÅ‘ menÅ± panelre
 	private KulsoMenu kulsoMenu;
-	// Referencia a belsõ menû panelre
+	// Referencia a belsÅ‘ menÅ± panelre
 	private BelsoMenu belsoMenu;
-	// referencia a játék panelra
+	// referencia a jÃ¡tÃ©k panelra
 	private JatekPanel jatekPanel;
-	// referencia a készítõk panelra
+	// referencia a kÃ©szÃ­tÅ‘k panelra
 	private KeszitokPanel keszitokPanel;
 	// referencia a Control objektumra
 	private static Control control;
@@ -60,7 +60,7 @@ public class Grafika{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		// segédtile hogy megtudjuk egy tile szélességét/magasságát
+		// segÃ©dtile hogy megtudjuk egy tile szÃ©lessÃ©gÃ©t/magassÃ¡gÃ¡t
 		Tile helpt = new Tile(50);
 		int gap = 5;
 		
@@ -89,7 +89,7 @@ public class Grafika{
 	
 
 	
-	// átveszi a belsõ menü gombjait és lekezeli õket
+	// Ã¡tveszi a belsÅ‘ menÃ¼ gombjait Ã©s lekezeli Å‘ket
 	public void belsoMenu(Allapot allapot){
 		if (allapot == Allapot.mentkilep){
 			panel.remove(belsoMenu);
@@ -99,7 +99,7 @@ public class Grafika{
 			try {
 				control.run(allapot);
 			} catch (Exception e) {
-				JOptionPane.showMessageDialog(frmWallMaster,"Fájl írási hiba!", "Hiba", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frmWallMaster,"FÃ¡jl Ã­rÃ¡si hiba!", "Hiba", JOptionPane.ERROR_MESSAGE);
 			}
 		}else{
 			panel.remove(belsoMenu);
@@ -109,7 +109,7 @@ public class Grafika{
 			try {
 				control.run(allapot);
 			} catch (Exception e) {
-				JOptionPane.showMessageDialog(frmWallMaster,"Nem tölthetõ be a kért pálya", "Hiba", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frmWallMaster,"Nem tÃ¶lthetÅ‘ be a kÃ©rt pÃ¡lya", "Hiba", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
@@ -118,7 +118,7 @@ public class Grafika{
 		jatekPanel.getdpalya().setdtileok(dt);
 	}
 	
-	// ha a külsõ menübõl érkezett esemény
+	// ha a kÃ¼lsÅ‘ menÃ¼bÅ‘l Ã©rkezett esemÃ©ny
 	public void kulsoMenu(Allapot allapot){
 		if (allapot == Allapot.kilep){
 			try {
@@ -148,13 +148,13 @@ public class Grafika{
 			try {
 				control.run(allapot);
 			} catch (Exception e) {
-				JOptionPane.showMessageDialog(frmWallMaster,"Nem tölthetõ be a kért pálya", "Hiba", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frmWallMaster,"Nem tÃ¶lthetÅ‘ be a kÃ©rt pÃ¡lya", "Hiba", JOptionPane.ERROR_MESSAGE);
 				e.printStackTrace();
 			}
 		}
 	}
 	
-	// ha a készítõk fülbõl érkezett esemény
+	// ha a kÃ©szÃ­tÅ‘k fÃ¼lbÅ‘l Ã©rkezett esemÃ©ny
 	public void keszitokMenu(){
 		panel.remove(keszitokPanel);
 		panel.add(kulsoMenu, BorderLayout.CENTER);
@@ -162,7 +162,7 @@ public class Grafika{
 		frmWallMaster.repaint();
 	}
 	
-	// a metódus meghívásával megjelenítjuk a belsõ menüt a játék közben
+	// a metÃ³dus meghÃ­vÃ¡sÃ¡val megjelenÃ­tjuk a belsÅ‘ menÃ¼t a jÃ¡tÃ©k kÃ¶zben
 	public void drawBelsoMenu(){
 		panel.remove(jatekPanel);
 		panel.add(belsoMenu, BorderLayout.CENTER);
@@ -170,23 +170,23 @@ public class Grafika{
 		frmWallMaster.repaint();
 	}
 	
-	// A JFrame újrarajzolása
+	// A JFrame ÃºjrarajzolÃ¡sa
 	public void ujraPaint(){
 		frmWallMaster.repaint();
 	}
 	
-	// A metódus megjeleníti egy dialógus ablakot, ha végigjátszottuk az összes pályát
+	// A metÃ³dus megjelenÃ­ti egy dialÃ³gus ablakot, ha vÃ©gigjÃ¡tszottuk az Ã¶sszes pÃ¡lyÃ¡t
 	public void jatekVege(){
-		JOptionPane.showMessageDialog(frmWallMaster,"Gratulálok! A játéknak vége!", "Játék vége!", JOptionPane.PLAIN_MESSAGE);
+		JOptionPane.showMessageDialog(frmWallMaster,"GratulÃ¡lok! A jÃ¡tÃ©knak vÃ©ge!", "JÃ¡tÃ©k vÃ©ge!", JOptionPane.PLAIN_MESSAGE);
 	}
 	
 	
-	// a Credits panel elõtérben van-e
+	// a Credits panel elÅ‘tÃ©rben van-e
 	public boolean isKeszitokPanelShowing(){
 		return keszitokPanel.isShowing();
 	}
 	
-	// A fõmenü elõtérben van-e
+	// A fÅ‘menÃ¼ elÅ‘tÃ©rben van-e
 	public boolean isKulsoMenuShowing(){
 		return kulsoMenu.isShowing();
 	}

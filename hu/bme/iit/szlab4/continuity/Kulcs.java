@@ -4,19 +4,19 @@ import java.util.ArrayList;
 
 public class Kulcs extends Palyaelem{
 	private boolean felveheto;
-	// az ˆsszes kulcsok sz·ma
+	// az √∂sszes kulcsok sz√°ma
 	private static int kulcsSzam=0;
-	// h·nyadik kulcs az aktu·lis pÈld·ny
+	// h√°nyadik kulcs az aktu√°lis p√©ld√°ny
 	private final int sajatSzam;
 	
 	public Kulcs(){
 		kulcsSzam++;
-		// termÈszetes sz·moz·s 1-tıl
+		// term√©szetes sz√°moz√°s 1-t≈ël
 		sajatSzam = kulcsSzam;
 		felveheto = true;
 	}
 	
-	// ha felvehetı a kulcs, meghÌvja a j·tÈkos kucsfelvesz fv-Èt
+	// ha felvehet≈ë a kulcs, megh√≠vja a j√°t√©kos kucsfelvesz fv-√©t
 	@Override
 	public boolean interakt(Jatekos j){
 		if(felveheto){
