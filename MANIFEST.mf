@@ -1,0 +1,1 @@
+Main-Class: hu.bme.iit.szlab4.continuity.Grafika
